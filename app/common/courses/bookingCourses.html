@@ -1,0 +1,72 @@
+<div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="box-image"
+			     ng-style="{'background-image': 'url(http://localhost/edu-backend/uploads/' + course.img_path + ')'}"></div>
+			<div class="box-title">{{city[course.city_id-1].name}}</div>
+		</div>
+		<div class="col-md-4">
+			<p class="search-title">{{course.title}}</p>
+			<small>{{course.short_description}}</small>
+			<br>
+			<div class="small-desciption">{{course.datetime[0].start_time}} 開始
+				<br/>合共 {{ course.datetime.length }} 節課
+			</div>
+		</div>
+		<div class="col-md-4 text-center">
+			<br>
+			<small>價格</small>
+			<p class="search-price">港幣 ${{course.price}}</p>
+			<a class="btn btn-primary btn-lg btn-block"
+			   ng-href="#/courses/{{course.courses_id}}">
+				詳情
+			</a>
+		</div>
+	</div>
+	<br>
+	<div class="left-box">
+		<div class="row">
+			<div class="col-md-2"><strong>提供者</strong>
+			</div>
+			<div class="col-md-4">
+				{{course.providers_title}}
+			</div>
+			<div class="col-md-2"><strong>地址</strong>
+			</div>
+			<div class="col-md-4">{{course.full_address}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><strong>種類</strong>
+			</div>
+			<div class="col-md-4">
+				{{category[course.category_id-1].name}}
+			</div>
+			<div class="col-md-2"><strong>時間</strong>
+			</div>
+			<div class="col-md-4">{{course.datetime[0].start_time}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><strong>開始日期</strong>
+			</div>
+			<div class="col-md-4">{{course.datetime[0].start_time}}
+			</div>
+			<div class="col-md-2"><strong>教授者</strong>
+			</div>
+			<div class="col-md-4">{{course.teacher}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><strong>結束日期</strong>
+			</div>
+			<div class="col-md-4">{{course.datetime[course.datetime.length - 1].end_time}}
+			</div>
+			<div class="col-md-2"><!--<strong>剩餘名額</strong>-->
+			</div>
+			<div class="col-md-4"><!--{{course.total_seats - course.taken_seats}}-->
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>

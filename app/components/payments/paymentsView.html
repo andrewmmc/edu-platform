@@ -1,0 +1,70 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="確認付款詳情"
+                description="確認付款以選讀{{course.title}}">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-9">
+			<h3>選得好！相信您會滿意這個課程。<br>
+				現在請確認以下課程資料以進行付款程序：</h3>
+			<span>我們會透過 Paypal 在您的信用卡扣除有關費用。<br>
+				只有您在按下「前往付款」按鈕時，才會進入 Paypal 輸入信用卡資料。{{base_api_url}}</span><br><br>
+			<form class="form-horizontal"
+			      action="http://localhost/edu-backend/paypal/Payments/Pay_chained" method="POST">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">課堂時間</label>
+					<div class="col-sm-10">
+						<table class="table">
+							<thead>
+							<tr>
+								<th width="20%">課節</th>
+								<th width="40%">開始時間</th>
+								<th width="40%">完結時間</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="course in lessons">
+								<td>{{$index+1}}</td>
+								<td>{{course.start_time}}</td>
+								<td>{{course.end_time}}</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">舉辦地點</label>
+					<div class="col-sm-10">
+						{{course.full_address}}
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" required="required"> 我同意及接受
+								<a href="#" target="_blank">條款及細則</a>。
+							</label>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<br>
+				<input type="hidden" name="courses_id" value="{{payment.courses_id}}">
+				<input type="hidden" name="members_id" value="{{payment.members_id}}">
+				<input type="hidden" name="providers_id" value="{{payment.providers_id}}">
+				<button type="submit" class="btn btn-primary btn-lg">
+					前往付款
+				</button>
+				<a ng-href="#/courses/{{courses_id}}" class="btn btn-default pull-right">
+					返回
+				</a>
+				<br><br><br><br>
+			</form>
+		</div>
+	</div>
+</div>
+<div footer></div>

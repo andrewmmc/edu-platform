@@ -1,0 +1,19 @@
+<div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-image"></div>
+            <div class="box-title">{{course.location}}</div>
+        </div>
+        <div class="col-md-8">
+            <p class="search-title">{{course.title}}</p>
+            <small>{{course.description}}
+            </small>
+            <br>
+            <div class="small-desciption">由 {{course.providers_title}} 提供
+                <br>{{course.datetime[0].date}} 至 {{course.datetime[course.datetime.length - 1].date}}
+                <br/>合共 {{course.datetime.length }} 節課
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

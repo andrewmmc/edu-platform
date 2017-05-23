@@ -1,0 +1,101 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token" username="username"></div>
+<dashboard-head title="個人檔案" description="透過本頁修改您的個人資料，以便我們與您取得聯絡。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="帳號管理" icon="glyphicon-user" collection="personal_menu">
+				</collection>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<form method="post" class="form-horizontal" ng-submit="postProfile(profile)">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用戶名稱</label>
+					<div class="col-sm-10">
+						<input type="hidden" name="members_id" ng-value="profile.members_id"/>
+						<input id="username" name="username" type="text" ng-value="profile.username"
+						       class="form-control"
+						       placeholder="" disabled>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">姓名*</label>
+					<div class="col-sm-10">
+						<input id="name" name="name" type="text"
+						       class="form-control" ng-model="profile.name" placeholder="">
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">聯絡電話*</label>
+					<div class="col-sm-10">
+						<div class="input-group"><span class="input-group-addon">+852</span>
+							<input id="phone" name="phone" type="text" class="form-control"
+							       placeholder="" ng-model="profile.phone" minlength="8" maxlength="8"
+							       required>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email*</label>
+					<div class="col-sm-10">
+						<input id="email" name="email" type="email"
+						       class="form-control" ng-model="profile.email" placeholder="" required>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">住址*</label>
+					<div class="col-sm-10">
+						<input id="address" name="address" type="text"
+						       class="form-control" ng-model="profile.address" placeholder="">
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">出生日期*</label>
+					<div class="col-sm-10">
+						<input name="birth_date" type="text"
+						       id="datetimepicker1" datetimepicker
+						       class="form-control" ng-model="profile.birth_date"
+						       ng-value="profile.birth_date" required/>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">教育程度*</label>
+					<div class="col-sm-10">
+						<select id="education_level" ng-model="profile.edu_level" name="edu_level"
+						        class="form-control">
+							<option value="1">小學程度或以下</option>
+							<option value="2">初中程度</option>
+							<option value="3">高中程度</option>
+							<option value="4">大專程度</option>
+							<option value="5">大學程度或以上</option>
+						</select>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">變更個人資料</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function () {
+		$('#datetimepicker1').datetimepicker({
+			locale: 'en',
+			format: 'YYYY-MM-DD',
+			maxDate: moment()
+		});
+	});
+</script>
+<div footer></div>

@@ -1,0 +1,106 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="登記成為服務提供者" description="登記成為服務提供者，提供課程服務以賺取收入">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+			<form method="post" class="form-horizontal" ng-submit="providersRegister(providers_register_data)">
+				<br>
+				帳戶資料
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用戶名*</label>
+					<div class="col-sm-10">
+						<input id="username" name="username" type="text" value="" class="form-control"
+						       placeholder="" ng-model="providers_register_data.username" required>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">密碼*</label>
+					<div class="col-sm-10">
+						<input id="password" name="password" type="password" value=""
+						       class="form-control" placeholder="" ng-model="providers_register_data.password"
+						       minlength="8" required>
+					</div>
+				</div>
+				<hr>
+				<br><br>服務提供者資料
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">名稱*</label>
+					<div class="col-sm-10">
+						<input id="title" name="title" type="text" value=""
+						       class="form-control" placeholder="" ng-model="providers_register_data.title" required>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">描述*</label>
+					<div class="col-sm-10">
+						<textarea id="description" name="description" value=""
+						          class="form-control" placeholder="" ng-model="providers_register_data.description"
+						          required>
+							</textarea>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">地區*</label>
+					<div class="col-sm-10">
+						<select class="form-control" ng-model="providers_register_data.city_id"
+						        ng-options="cit.city_id as cit.name for cit in city track by cit.city_id">
+							<option style="display: none" value="">{{city[0].name}}</option>
+						</select>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">聯絡電話*</label>
+					<div class="col-sm-10">
+						<div class="input-group"><span class="input-group-addon">+852</span>
+							<input id="phone" name="phone" type="text" value="" class="form-control"
+							       placeholder="" minlength="8" maxlength="8" ng-model="providers_register_data.phone"
+							       required>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email*</label>
+					<div class="col-sm-10">
+						<input id="email" name="email" type="email" value=""
+						       class="form-control" placeholder="" ng-model="providers_register_data.email" required>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">辦公室住址*</label>
+					<div class="col-sm-10">
+						<input id="office_address" name="office_address" type="text" value=""
+						       class="form-control" placeholder="" ng-model="providers_register_data.office_address"
+						       required>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">已在教育局註冊*</label>
+					<div class="col-sm-10">
+						<select id="gov_registered" name="gov_registered"
+						        ng-options="gov.id as gov.name for gov in gov_registered"
+						        ng-model="providers_register_data.gov_registered" class="form-control">
+						</select>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary btn-lg">登記</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div footer></div>

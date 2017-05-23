@@ -1,0 +1,18 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token" username="username"></div>
+<dashboard-head title="搜尋結果" description="一共搜索到 {{courses.length}} 個結果。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<!--<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="搜尋條件" icon="glyphicon-search" collection="">
+				</collection>
+			</div>
+		</div>-->
+		<div class="col-md-offset-2 col-md-8">
+			<booking-courses-list courses="courses" city="city" category="category"></booking-courses-list>
+			<dir-pagination-controls></dir-pagination-controls>
+		</div>
+	</div>
+</div>
+<div footer></div>

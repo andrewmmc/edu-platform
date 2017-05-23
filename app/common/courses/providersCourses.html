@@ -1,0 +1,172 @@
+<div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="box-image"
+			     ng-style="{'background-image': 'url(http://localhost/edu-backend/uploads/' + course.img_path + ')'}"></div>
+			<div class="box-title">{{city[course.city_id-1].name}}</div>
+		</div>
+		<div class="col-md-8">
+			<p class="search-title">{{course.title}}</p>
+			<small>{{course.short_description}}
+			</small>
+			<br>
+			<div class="small-desciption">
+				{{course.datetime[0].start_time}} 開始，{{course.courses_date[0].start_time}}
+				<br/>合共 {{ course.datetime.length }} 節課<br><br>
+				<a data-toggle="modal" data-target="#details{{course.courses_id}}" class="btn btn-primary">編輯資料</a>
+				<a ng-href="#/providers/lessons/{{course.courses_id}}"
+				   class="btn btn-default">課堂列表</a>
+				<a ng-href="#/providers/upload/{{course.courses_id}}"
+				   class="btn btn-default">相片</a>
+				<a ng-href="#/providers/documents/{{course.courses_id}}"
+				   class="btn btn-default">文件</a>
+				<a data-toggle="modal" data-target="#members{{course.courses_id}}"
+				   class="btn btn-default">學生清單</a>
+				<a ng-href="#/providers/attendance/{{course.courses_id}}"
+				   class="btn btn-default">出席清單</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="details{{course.courses_id}}" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<form method="post" class="form-horizontal" ng-submit="postCourses(course)">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">編輯課程 {{course.title}} 的資料</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">課程名稱</label>
+							<div class="col-sm-10">
+								<input id="title" name="title" type="text"
+								       class="form-control" ng-model="course.title" required>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">分類</label>
+							<div class="col-sm-10">
+								<select class="form-control" ng-model="course.category_id"
+								        ng-options="category.category_id as category.name for category in category track by category.category_id">
+									<option style="display: none" value="">{{category[
+										course.category_id-1].name}}
+									</option>
+								</select>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">課程簡介</label>
+							<div class="col-sm-10">
+								<input id="short_description" name="short_description" type="text"
+								       class="form-control" ng-model="course.short_description" required>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">課程描述</label>
+							<div class="col-sm-10">
+								<textarea id="full_description" name="full_description"
+								          class="form-control" ng-model="course.full_description"
+								          required>
+							</textarea>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">授課者</label>
+							<div class="col-sm-10">
+								<input id="teacher" name="teacher" type="text"
+								       class="form-control" ng-model="course.teacher" required>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">名額</label>
+							<div class="col-sm-10">
+								<input id="total_seats" name="total_seats" type="text"
+								       class="form-control" ng-model="course.total_seats" required>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">地區</label>
+							<div class="col-sm-10">
+								<select class="form-control" ng-model="course.city_id"
+								        ng-options="cit.city_id as cit.name for cit in city track by cit.city_id">
+									<option style="display: none" value="">{{city[
+										course.city_id-1].name}}
+									</option>
+								</select>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">舉辦地點</label>
+							<div class="col-sm-10">
+								<input id="full_address" name="full_address" type="text"
+								       class="form-control" ng-model="course.full_address" required>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">價格</label>
+							<div class="col-sm-10">
+								<div class="input-group"><span class="input-group-addon">HKD$</span>
+									<input id="price" name="price" type="text"
+									       class="form-control" ng-model="course.price" required></div>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">注意事項</label>
+							<div class="col-sm-10">
+								<textarea id="remarks" name="remarks"
+								          class="form-control" ng-model="course.remarks"
+								          required>
+							</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">更新</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="members{{course.courses_id}}" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">課程 {{course.title}} 學生清單</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<table class="table">
+							<thead>
+							<tr>
+								<th width="20%">註冊編號</th>
+								<th width="40%">學生名稱</th>
+								<th width="20%">學生編號</th>
+								<th width="20%">註冊時間</th>
+							</tr>
+							</thead>
+							<tr ng-repeat="members in course.registration">
+								<td>{{members.registration_id}}</td>
+								<td>{{members.members_name}}</td>
+								<td>{{members.members_id}}</td>
+								<td>{{members.created_at}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>

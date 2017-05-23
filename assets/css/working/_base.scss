@@ -1,0 +1,134 @@
+/* Font */
+$primary-font: 'Open Sans', sans-serif;
+
+/* Color */
+$primary-color: #475c91;
+$white-color: #FFFFFF;
+$dark-grey-color: #333333;
+$grey-color: #666666;
+$light-grey-color: #F9F9F9;
+$background-color: #F1F1F1;
+
+/* Variables */
+$nav-bar-height: 50px;
+
+/* Mixin to prefix a property */
+@mixin prefix($property, $value, $prefixes: ()) {
+	@each $prefix in $prefixes {
+		#{'-' + $prefix + '-' + $property}: $value;
+	}
+	#{$property}: $value;
+}
+
+/* Global */
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	padding-top: $nav-bar-height; // menu height
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $primary-font;
+	font-weight: bold;
+}
+
+p, div, span {
+	font-family: $primary-font;
+}
+
+a {
+	color: $primary-color;
+	&:visited, &:active, &:hover {
+		color: $primary-color;
+	}
+}
+
+div.inline {
+	float: left;
+}
+
+.clearBoth {
+	clear: both;
+}
+
+.margin-reset {
+	margin: 0;
+}
+
+.small-desciption {
+	font-size: 85%;
+	color: $grey-color;
+	margin-top: 5px;
+}
+
+hr {
+	margin: 20px 0 20px 0;
+	border: 0;
+	border-top: 1px solid $light-grey-color;
+}
+
+/* Large text block */
+div {
+	&.details-text {
+		white-space: pre-line;
+	}
+}
+
+/* Button */
+
+.pagination > {
+	.active > {
+		a, span, a:hover, span:hover, a:focus, span:focus {
+			background-color: $primary-color;
+			border-color: $primary-color;
+		}
+	}
+	li > {
+		a {
+			color: $primary-color;
+			&:hover {
+				color: $primary-color;
+			}
+		}
+		span {
+			color: $primary-color;
+		}
+	}
+}
+
+.btn-primary {
+	background-image: none;
+	background-color: $primary-color !important;
+	color: $white-color;
+	border: none;
+	&:active, &:visited {
+		background-image: none;
+		background-color: $primary-color !important;
+		color: $white-color;
+		border: none;
+	}
+	&:hover {
+		background-color: $primary-color;
+	}
+}
+
+.dropdown, .nav, .pagination, .carousel, .panel-title a {
+	cursor: pointer;
+}
+
+a {
+	&.btn-default {
+		color: $dark-grey-color;
+	}
+}
+
+/* Responsive Styles */
+
+@media (max-width: 767px) {
+	.carousel {
+		height: 70%;
+	}
+}

@@ -1,0 +1,203 @@
+<div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="box-image"
+			     ng-style="{'background-image': 'url(http://localhost/edu-backend/uploads/' + course.img_path + ')'}"></div>
+			<div class="box-title">{{city[course.city_id-1].name}}</div>
+		</div>
+		<div class="col-md-4">
+			<p class="search-title">{{course.title}}</p>
+			<small>{{course.short_description}}</small>
+			<br>
+			<div class="small-desciption">{{course.datetime[0].start_time}} 開始，{{course.courses_date[0].start_time}}
+				<br/>合共 {{ course.datetime.length }} 節課
+			</div>
+		</div>
+		<div class="col-md-4 text-center">
+			<br>
+			<a class="btn btn-primary btn-lg btn-block"
+			   data-toggle="modal" data-target="#myModal{{course.courses_id}}">
+				詳情
+			</a>
+		</div>
+	</div>
+	<br>
+	<div class="left-box">
+		<div class="row">
+			<div class="col-md-2"><strong>提供者</strong>
+			</div>
+			<div class="col-md-4">
+				{{course.providers_title}}
+			</div>
+			<div class="col-md-2"><strong>地址</strong>
+			</div>
+			<div class="col-md-4">{{course.full_address}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><strong>種類</strong>
+			</div>
+			<div class="col-md-4">
+				{{category[course.category_id-1].name}}
+			</div>
+			<div class="col-md-2"><strong>時間</strong>
+			</div>
+			<div class="col-md-4">{{course.datetime[0].start_time}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><strong>開始日期</strong>
+			</div>
+			<div class="col-md-4">{{course.datetime[0].start_time}}
+			</div>
+			<div class="col-md-2"><strong>教授者</strong>
+			</div>
+			<div class="col-md-4">{{course.teacher}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><strong>結束日期</strong>
+			</div>
+			<div class="col-md-4">{{course.datetime[course.datetime.length - 1].end_time}}
+			</div>
+			<div class="col-md-2"><!--<strong>剩餘名額</strong>-->
+			</div>
+			<div class="col-md-4"><!--{{course.total_seats - course.taken_seats}}-->
+			</div>
+		</div>
+	</div>
+	<hr>
+	<!-- Modal -->
+	<div id="myModal{{course.courses_id}}" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">課程資料</h4>
+				</div>
+				<div class="modal-body">
+					<uib-tabset>
+						<uib-tab heading="課程資料"><br>
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">課程描述</label>
+									<div class="col-sm-10">
+										{{course.full_description}}
+									</div>
+								</div>
+								<hr>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">授課者</label>
+									<div class="col-sm-10">
+										{{course.teacher}}
+									</div>
+								</div>
+								<hr>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">名額</label>
+									<div class="col-sm-10">
+										<!--{{course.total_seats-course.taken_seats}} 位
+										（-->共 {{course.total_seats}} 位<!--）-->
+									</div>
+								</div>
+								<hr>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">課堂時間</label>
+									<div class="col-sm-10">
+										<table class="table">
+											<thead>
+											<tr>
+												<th width="20%">課節</th>
+												<th width="30%">開始時間</th>
+												<th width="30%">完結時間</th>
+												<th width="20%">出席</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr ng-repeat="course in course.datetime">
+												<td>{{$index+1}}</td>
+												<td>{{course.start_time}}</td>
+												<td>{{course.end_time}}</td>
+												<td>{{course.attended ? "是" : "否"}}</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<hr>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">舉辦地點</label>
+									<div class="col-sm-10">
+										{{course.full_address}}
+									</div>
+								</div>
+								<hr>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">注意事項</label>
+									<div class="col-sm-10 details-text">
+										{{course.remarks}}
+									</div>
+								</div>
+								<hr>
+							</form>
+						</uib-tab>
+						<uib-tab heading="相片"><br>
+							<div>
+								<table class="table">
+									<caption>
+									</caption>
+									<thead>
+									<tr>
+										<th width="25%">編號</th>
+										<th width="50%">相片路徑</th>
+										<th width="25%">上傳日期</th>
+									</tr>
+									</thead>
+									<tr ng-repeat="photo in course.photos">
+										<td>
+											<strong>{{photo.photos_id}}</strong>
+										</td>
+										<td>
+											<a ng-href="{{base_api_url}}/../../uploads/{{photo.path}}"
+											   target="_blank">{{photo.path}}</a>
+										</td>
+										<td>
+											{{photo.created_at}}
+										</td>
+									</tr>
+								</table>
+							</div>
+						</uib-tab>
+						<uib-tab heading="文件"><br>
+							<div>
+								<table class="table">
+									<caption>
+									</caption>
+									<thead>
+									<tr>
+										<th width="25%">編號</th>
+										<th width="50%">文件路徑</th>
+										<th width="25%">上傳日期</th>
+									</tr>
+									</thead>
+									<tr ng-repeat="documents in course.documents">
+										<td>
+											<strong>{{documents.documents_id}}</strong>
+										</td>
+										<td>
+											<a ng-href="{{base_api_url}}/../../docs/{{documents.path}}"
+											   target="_blank">{{documents.path}}</a>
+										</td>
+										<td>
+											{{documents.created_at}}
+										</td>
+									</tr>
+								</table>
+							</div>
+						</uib-tab>
+					</uib-tabset>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

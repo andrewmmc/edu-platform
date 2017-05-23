@@ -1,0 +1,169 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<courses-head title="{{course.title}}"
+              description="{{course.short_description}}"
+              color=""
+              category="{{category[course.category_id-1].name}}"
+              location="{{city[course.city_id-1].name}}"
+              course-date="{{lessons[0].start_time}}">
+</courses-head>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-9">
+			<uib-tabset>
+
+				<!-- 課程資料 -->
+				<uib-tab heading="課程資料"><br>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">課程描述</label>
+							<div class="col-sm-10">
+								{{course.full_description}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">授課者</label>
+							<div class="col-sm-10">
+								{{course.teacher}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">名額</label>
+							<div class="col-sm-10">
+								<!--{{course.total_seats-course.taken_seats}} 位
+								（-->共 {{course.total_seats}} 位<!--）-->
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">課堂時間</label>
+							<div class="col-sm-10">
+								<table class="table">
+									<thead>
+									<tr>
+										<th width="20%">課節</th>
+										<th width="40%">開始時間</th>
+										<th width="40%">完結時間</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="course in lessons">
+										<td>{{$index+1}}</td>
+										<td>{{course.start_time}}</td>
+										<td>{{course.end_time}}</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">舉辦地點</label>
+							<div class="col-sm-10">
+								{{course.full_address}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">注意事項</label>
+							<div class="col-sm-10 details-text">
+								{{course.remarks}}
+							</div>
+						</div>
+						<hr>
+					</form>
+				</uib-tab>
+
+				<!-- 相片 -->
+				<uib-tab heading="相片"><br>
+					<div class="courses-photos">
+						<uib-carousel active="active" interval="photo_interval" s>
+							<uib-slide ng-repeat="photo in course.photos track by $index" index="$index">
+								<div class="courses-photo"
+								     ng-style="{'background-image': 'url(http://localhost/edu-backend/uploads/' + photo.path + ')'}">
+									<div class="carousel-caption">
+										<p>{{photo.description}}</p>
+									</div>
+								</div>
+							</uib-slide>
+						</uib-carousel>
+					</div>
+				</uib-tab>
+
+				<!-- 提供者資料 -->
+				<uib-tab heading="提供者資料"><br>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">名稱</label>
+							<div class="col-sm-10">
+								{{providers.title}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">描述</label>
+							<div class="col-sm-10">
+								{{providers.description}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">聯絡電話</label>
+							<div class="col-sm-10">
+								{{providers.phone}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">電郵</label>
+							<div class="col-sm-10">
+								{{providers.email}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">地區</label>
+							<div class="col-sm-10">
+								{{city[providers.city_id-1].name}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">辦公室地址</label>
+							<div class="col-sm-10">
+								{{providers.office_address}}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">已註冊為教育機構</label>
+							<div class="col-sm-10">
+								{{providers.gov_registered ? '是' : '否'}}
+							</div>
+						</div>
+						<hr>
+					</form>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+
+		<!-- 報讀有關課程 -->
+		<div class="col-xs-12 col-md-3">
+			<div class="panel panel-default" ng-hide="type == 'providers'">
+				<div class="panel-heading">
+					<h3 class="panel-title">報讀有關課程</h3>
+				</div>
+				<div class="panel-body">
+					<small>價格</small>
+					<p class="search-price">港幣 ${{course.price}}</p>
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="subscribe(courses_id)">
+						報讀
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div footer></div>

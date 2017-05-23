@@ -1,0 +1,35 @@
+/* Footer */
+
+footer {
+  &#footer {
+    border-bottom: 5px solid #41454F;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #272A33;
+    /*margin-top: 50px;*/
+    color: #55616D;
+    min-height: 100px;
+    a {
+      color: #55616D;
+      &:visited, &:active {
+        color: #55616D;
+      }
+    }
+    h5 {
+      font-weight: bold;
+      color: $white-color;
+    }
+    a:hover {
+      color: #55616D;
+      text-underline: none;
+    }
+  }
+  &#copyright {
+    width: 100%;
+    min-height: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: $white-color;
+    color: #555;
+  }
+}

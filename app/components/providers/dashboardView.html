@@ -1,0 +1,132 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="個人中心" description="透過本頁查閱和管理您選讀的課程。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="帳號管理" icon="glyphicon-user" collection="personal_menu">
+				</collection>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<a data-toggle="modal" data-target="#add_course"
+			   class="btn btn-primary pull-right">新增課程</a>
+			<uib-tabset>
+				<uib-tab heading="全部課程"><br>
+
+					<providers-courses-list courses="courses" lessons="lessons"
+					                        post-courses="postCourses"></providers-courses-list>
+					<dir-pagination-controls></dir-pagination-controls>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+	</div>
+</div>
+
+<div id="add_course" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<form method="post" class="form-horizontal" ng-submit="postAddCourses(course2)">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">新增課程</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">課程名稱</label>
+						<div class="col-sm-10">
+							<input id="title" name="title" type="text"
+							       class="form-control" ng-model="course2.title" required>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">分類</label>
+						<div class="col-sm-10">
+							<select class="form-control" ng-model="course2.category_id"
+							        ng-options="category.category_id as category.name for category in category track by category.category_id">
+							</select>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">課程簡介</label>
+						<div class="col-sm-10">
+							<input id="short_description" name="short_description" type="text"
+							       class="form-control" ng-model="course2.short_description" required>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">課程描述</label>
+						<div class="col-sm-10">
+								<textarea id="full_description" name="full_description"
+								          class="form-control" ng-model="course2.full_description"
+								          required>
+							</textarea>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">授課者</label>
+						<div class="col-sm-10">
+							<input id="teacher" name="teacher" type="text"
+							       class="form-control" ng-model="course2.teacher" required>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">名額</label>
+						<div class="col-sm-10">
+							<input id="total_seats" name="total_seats" type="text"
+							       class="form-control" ng-model="course2.total_seats" required>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">地區</label>
+						<div class="col-sm-10">
+							<select class="form-control" ng-model="course2.city_id"
+							        ng-options="cit.city_id as cit.name for cit in city track by cit.city_id">
+							</select>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">舉辦地點</label>
+						<div class="col-sm-10">
+							<input id="full_address" name="full_address" type="text"
+							       class="form-control" ng-model="course2.full_address" required>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">價格</label>
+						<div class="col-sm-10">
+							<div class="input-group"><span class="input-group-addon">HKD$</span>
+								<input id="price" name="price" type="text"
+								       class="form-control" ng-model="course2.price" required></div>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">注意事項</label>
+						<div class="col-sm-10">
+								<textarea id="remarks" name="remarks"
+								          class="form-control" ng-model="course2.remarks"
+								          required>
+							</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">新增</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div footer></div>

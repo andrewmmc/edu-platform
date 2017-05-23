@@ -1,0 +1,40 @@
+/* Courses Images Slider */
+.courses-photos {
+	max-width: 600px;
+	height: 400px;
+	margin: 0 auto 20px auto;
+}
+
+div {
+	&.courses-photo {
+		background-size: cover;
+		max-width: 600px;
+		height: 400px;
+		display: block;
+	}
+}
+
+.carousel-control {
+	background: none !important;
+	text-shadow: none !important;
+}
+
+@media (max-width: 767px) {
+	.courses-photos {
+		max-width: 300px;
+		height: 200px;
+		margin: 0 auto;
+	}
+
+	div {
+		&.courses-photo {
+			background-size: cover;
+			max-width: 300px;
+			height: 200px;
+			display: block;
+		}
+		&.carousel-caption {
+			padding-bottom: 0px;
+		}
+	}
+}

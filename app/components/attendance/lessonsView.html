@@ -1,0 +1,112 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="{{lessons[0].title}} 課堂列表" description="在此編輯課堂列表。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="課程管理" icon="glyphicon-calendar" collection="personal_menu">
+				</collection>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<a data-toggle="modal" data-target="#new_lesson"
+			   class="btn btn-primary pull-right">新增課堂</a>
+			<table class="table">
+				<thead>
+				<tr>
+					<th width="25%">課節</th>
+					<th width="25%">開始時間</th>
+					<th width="25%">完結時間</th>
+					<th width="25%"></th>
+				</tr>
+				</thead>
+				<tr ng-repeat="lesson in courses_lessons">
+
+					<td>
+						<strong>{{$index + 1}}</strong>
+					</td>
+					<td>
+						<span ng-hide="lesson.edit == true">{{lesson.start_time}}</span>
+						<input class="form-control"
+						       id="start_time{{$index}}" name="start_time" type="text"
+						       ng-model="lesson.start_time"
+						       ng-show="lesson.edit == true"
+						       placeholder="YYYY-MM-DD HH:MM"
+						       required>
+					</td>
+					<td>
+						<span ng-hide="lesson.edit == true">{{lesson.end_time}}</span>
+						<input class="form-control"
+						       id="end_time{{$index}}" name="end_time" type="text"
+						       ng-model="lesson.end_time"
+						       ng-show="lesson.edit == true"
+						       placeholder="YYYY-MM-DD HH:MM"
+						       required>
+					</td>
+					<td>
+						<a href="" ng-click="lesson.edit = !lesson.edit" ng-init="lesson.edit == false"
+						   ng-hide="lesson.edit == true">編輯</a>
+						<button type="submit" class="btn btn-primary"
+						        ng-show="lesson.edit == true"
+						        ng-click="postEditLessons(lesson, $index)">更新
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div id="new_lesson" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<form method="post" class="form-horizontal" ng-submit="postLessons(new_lesson)">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">新增課堂</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">開始時間</label>
+						<div class="col-sm-10">
+							<input id="start_time" type="text"
+							       placeholder="YYYY-MM-DD HH:MM"
+							       class="form-control" ng-model="new_lesson.start_time" required>
+
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">完結時間</label>
+						<div class="col-sm-10">
+							<input id="end_time" type="text"
+							       class="form-control"
+							       placeholder="YYYY-MM-DD HH:MM"
+							       ng-model="new_lesson.end_time" required>
+						</div>
+					</div>
+					<hr>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">新增</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	/*$(function () {
+	 $('#start_time').datetimepicker({
+	 locale: 'en',
+	 format: 'YYYY-MM-DD LT',
+	 minDate: moment()
+	 });
+	 $('#end_time').datetimepicker({
+	 locale: 'en',
+	 format: 'YYYY-MM-DD LT',
+	 minDate: moment()
+	 });
+	 });*/
+</script>
+<div footer></div>

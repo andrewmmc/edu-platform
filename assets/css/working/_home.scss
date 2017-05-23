@@ -1,0 +1,43 @@
+/* Home */
+
+.bs-docs-header, .bs-docs-masthead {
+	position: relative;
+	padding: 30px 0;
+	color: $white-color;
+	text-align: left;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+	@include prefix(background-size, cover, webkit moz o ms);
+}
+
+.home-header {
+	height: 400px;
+	background: url("../images/common/bg.jpg") no-repeat center center fixed;
+}
+
+.home-content {
+	background-color: $white-color;
+	padding-bottom: 50px;
+}
+
+.home-top-line {
+	width: 50px;
+	height: 5px;
+	background-color: $primary-color;
+	margin: 0 auto;
+}
+
+.home-icon {
+	font-size: 48px;
+	color: $primary-color;
+}
+
+.pagecontent-header {
+	height: 100px;
+	background: url("../images/common/bg3.jpg") no-repeat center center fixed;
+}
+
+p.lead {
+	margin: 0 auto 30px;
+	font-size: 24px;
+	color: $dark-grey-color;
+}

@@ -1,0 +1,59 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="{{lessons[0].title}} 學生清單及出席紀錄" description="在此查閱所有學生清單及出席紀錄。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="課程管理" icon="glyphicon-calendar" collection="personal_menu">
+				</collection>
+			</div>
+		</div>
+		<div class="col-md-9"><!--<a class="btn btn-primary pull-right">匯出 CSV 檔案</a>-->
+			<uib-tabset>
+				<uib-tab ng-repeat="lesson in lessons" heading="第 {{$index+1}} 課"><br>
+					<div>
+						<table class="table">
+							<caption>
+								<b>
+									{{lesson.title}} 第 {{$index+1}} 課 (參考編號 {{lesson.lessons_id}})</b>
+								<br>
+								課堂開始時間: {{lesson.start_time}}<br>
+								課堂開始時間: {{lesson.end_time}}<br>
+							</caption>
+							<thead>
+							<tr>
+								<th width="25%">學生編號</th>
+								<th width="25%">學生名稱</th>
+								<th width="25%">狀態</th>
+								<th width="25%"></th>
+							</tr>
+							</thead>
+							<tr dir-paginate='members in lesson.registration | itemsPerPage: 5'>
+								<td>
+									<strong>{{members.members_id}}</strong>
+								</td>
+								<td>
+									{{members.members_name}}
+								</td>
+								<td>
+									<span style="color: green;" ng-if="members.attended*1==1">已出席</span>
+									<span style="color: darkred;" ng-if="members.attended*1==0">未有紀錄</span>
+								</td>
+								<td>
+									<form ng-if="members.attended*1==0"
+									      ng-submit="postAttendance(courses_id, lesson.lessons_id, members.members_id)">
+										<button type="submit" class="btn btn-primary">出席</button>
+									</form>
+								</td>
+							</tr>
+						</table>
+						<dir-pagination-controls></dir-pagination-controls>
+					</div>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+	</div>
+</div>
+<div footer></div>

@@ -1,0 +1,24 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="個人中心" description="透過本頁查閱和管理您選讀的課程。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="帳號管理" icon="glyphicon-user" collection="personal_menu">
+				</collection>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<uib-tabset>
+				<uib-tab heading="課程列表"><br>
+					<full-courses-list courses="courses"></full-courses-list>
+					<dir-pagination-controls></dir-pagination-controls>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+	</div>
+</div>
+
+<div footer></div>

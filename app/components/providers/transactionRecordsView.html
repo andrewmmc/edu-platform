@@ -1,0 +1,23 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="交易紀錄" description="在此查閱所有學生的交易紀錄。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="帳號管理" icon="glyphicon-user" collection="personal_menu">
+				</collection>
+			</div>
+		</div>
+		<div class="col-md-9"><!--<a class="btn btn-primary pull-right">匯出 CSV 檔案</a>-->
+			<uib-tabset>
+				<uib-tab heading="所有交易紀錄"><br>
+					<transactions-list list="transaction" caption="您可在此查閱所有交易紀錄。"></transactions-list>
+					<dir-pagination-controls></dir-pagination-controls>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+	</div>
+</div>
+<div footer></div>

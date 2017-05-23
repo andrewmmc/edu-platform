@@ -1,0 +1,23 @@
+<tr>
+	<td>
+		<strong>{{transactions.transaction_id}}</strong>
+	</td>
+	<td>
+		{{transactions.courses_title}}
+	</td>
+	<td>
+		{{transactions.members_name}}
+	</td>
+	<td>
+		港幣 {{transactions.amounts}} 元
+	</td>
+	<td>
+		{{transactions.status*1 ? "成功" : "失敗"}}
+	</td>
+	<td>
+		{{transactions.ref_id}}
+	</td>
+	<td>
+		{{transactions.created_at}}
+	</td>
+</tr>

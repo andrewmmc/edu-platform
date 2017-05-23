@@ -1,0 +1,17 @@
+<div>
+	<table class="table">
+		<caption>{{caption}}</caption>
+		<thead>
+		<tr>
+			<th width="7%">編號</th>
+			<th width="20%">課程名稱</th>
+			<th width="15%">學生名稱</th>
+			<th width="15%">金額</th>
+			<th width="15%">狀態</th>
+			<th width="10%">參考編號</th>
+			<th width="18%">時間</th>
+		</tr>
+		</thead>
+		<tr dir-paginate='transactions in list | itemsPerPage: 5' transactions='transactions'></tr>
+	</table>
+</div>

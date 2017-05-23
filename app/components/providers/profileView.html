@@ -1,0 +1,92 @@
+<div header category="category" user="user" status="status" type="type" logout="logout" token="token"
+     username="username"></div>
+<dashboard-head title="服務提供者檔案" description="透過本頁修改服務提供者檔案，以供其他學生查閱。">
+</dashboard-head>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 visible-md visible-lg">
+			<div id="sidebar">
+				<collection title="帳號管理" icon="glyphicon-user" collection="personal_menu">
+				</collection>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<form method="post" class="form-horizontal" ng-submit="postProfile(profile)">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用戶名*</label>
+					<div class="col-sm-10">
+						<input id="username" name="username" type="text" value="" class="form-control"
+						       placeholder="" ng-model="profile.username" disabled>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">描述*</label>
+					<div class="col-sm-10">
+						<textarea id="description" name="description" value=""
+						          class="form-control" placeholder="" ng-model="profile.description"
+						          required>
+							</textarea>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">地區*</label>
+					<div class="col-sm-10">
+						<select class="form-control" ng-model="profile.city_id"
+						        ng-options="cit.city_id as cit.name for cit in city track by cit.city_id">
+							<option style="display: none" value="">{{city[
+								profile.city_id-1].name}}
+							</option>
+						</select>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">聯絡電話*</label>
+					<div class="col-sm-10">
+						<div class="input-group"><span class="input-group-addon">+852</span>
+							<input id="phone" name="phone" type="text" value="" class="form-control"
+							       placeholder="" minlength="8" maxlength="8" ng-model="profile.phone"
+							       required>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email*</label>
+					<div class="col-sm-10">
+						<input id="email" name="email" type="email" value=""
+						       class="form-control" placeholder="" ng-model="profile.email" required>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">辦公室住址*</label>
+					<div class="col-sm-10">
+						<input id="office_address" name="office_address" type="text" value=""
+						       class="form-control" placeholder="" ng-model="profile.office_address"
+						       required>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">已在教育局註冊*</label>
+					<div class="col-sm-10">
+						<select id="gov_registered" name="gov_registered"
+						        ng-options="gov.id as gov.name for gov in gov_registered"
+						        ng-model="profile.gov_registered" class="form-control">
+						</select>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">變更個人資料</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div footer></div>

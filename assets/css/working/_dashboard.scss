@@ -1,0 +1,46 @@
+/* Dashboard Header */
+
+div {
+	&.masthead {
+		padding: 20px 0 20px 0;
+		background-color: $primary-color;
+		color: $white-color;
+		a, small {
+			color: $white-color;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+	}
+	&#sidebar {
+		min-height: 480px;
+		h3.highlight {
+			padding-bottom: 14px;
+			border-bottom: 2px solid $primary-color;
+			color: $primary-color;
+			i {
+				margin-left: 15px;
+				padding-right: 5px;
+			}
+		}
+	}
+}
+
+/* Dashboard Sidebar */
+
+ul.nav-stacked > li a {
+	border-left: 2px solid transparent;
+	padding-left: 15px;
+	&:visited, &:hover, &:focus, &:active {
+		border-left: 2px solid $primary-color;
+		background-color: transparent;
+	}
+	&.active {
+		border-left: 2px solid $primary-color;
+		font-weight: bold;
+		&:visited, &:hover, &:focus, &:active {
+			border-left: 2px solid $primary-color;
+			font-weight: bold;
+		}
+	}
+}

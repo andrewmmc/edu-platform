@@ -1,0 +1,23 @@
+<tr>
+	<td>
+		<strong>{{payment.transaction_id}}</strong>
+	</td>
+	<td>
+		{{payment.courses_title}}
+	</td>
+	<td>
+		{{payment.providers_title}}
+	</td>
+	<td>
+		港幣 {{payment.amounts}} 元
+	</td>
+	<td>
+		{{payment.status*1 ? "成功" : "失敗"}}
+	</td>
+	<td>
+		{{payment.ref_id}}
+	</td>
+	<td>
+		{{payment.created_at}}
+	</td>
+</tr>
