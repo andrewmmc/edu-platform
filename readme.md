@@ -1,6 +1,8 @@
 Education Catalog Platform (Front-end)
 ======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/andrewmmc/edu-platform.svg)](https://greenkeeper.io/)
+
 This repository is no longer maintained for a while as the project is for demo purposes only. The project was developed in 2016 and it may not well-organized.
 
 The project proposed a new system called Education Catalog Platform. It is designed for students and education providers in the education market. Users (students) can search, compare and register different courses online. Education providers can provide their information to public via the platform. It can benefit both sides as students can save money to have better education courses, and education providers can promote their services to potential students with a user-friendly online payment system (Paypal).
